@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/image_gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="static/img/logo_white.png">
+    <title>Furr Sale</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+        }
+
+        .navbar {
+            position: relative;
+            margin: 24px;
+            background-color: #ffffff;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            -webkit-box-shadow: 3px 3px 10px -2.5px #dddddd;
+            -moz-box-shadow: 3px 3px 10px -2.5px #dddddd;
+            box-shadow: 3px 3px 10px -2.5px #dddddd;
+        }
+
+        .navbar div {
+            margin-left: 8px;
+            margin-right: 8px;
+            padding: 5px;
+        }
+
+        .navbar a {
+            color: #000000;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        #active{
+            background-color: #ddd;
+            color: rgb(112, 24, 24);
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: rgb(112, 24, 24);
+        }
+
+        @media screen and (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .animated-image {
+            position: absolute;
+            z-index: -1;
+            top: 10%;
+            right: 10%;
+            width: 200px;
+            animation: wiggle 2s infinite;
+        }
+
+        @keyframes wiggle {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(3deg);
+            }
+
+            50% {
+                transform: rotate(-7deg);
+            }
+
+            75% {
+                transform: rotate(5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .paw_cart {
+            width: 50px;
+        }
+
+        .counter {
+            position: absolute;
+            top: 3%;
+            right: 0.33%;
+            color: rgb(255, 0, 0);
+            font-size: 14px;
+            font-weight: bold;
+
+        }
+        @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+        #adopt {
+            position: relative;
+            z-index: 0;
+            background-color: #ffffff;
+            overflow: hidden;
+            animation: fadeIn 2s;
+        }
+
+        .sr-only {
+            position: absolute;
+            pointer-events: none;
+            width: 1px;
+            height: 1px;
+            color: black;
+        }
+
+        input {
+            position: absolute;
+            opacity: 0;
+            margin-top: 95vh;
+            cursor: pointer;
+        }
+
+        label {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: transparent;
+            margin: 95vh 6px 0 6px;
+            z-index: 2;
+            text-decoration: none;
+            cursor: pointer;
+            transition-duration: .4s;
+
+        }
+
+
+        input+label::after {
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 512' width='100' style='fill:white'%3E%3Cpath d='M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z' /%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center 55%;
+            background-size: 80px 80px;
+            line-height: 100vh;
+            transition: background-size 200ms;
+            position: absolute;
+            color: black;
+            height: calc(95vh - 12px);
+            width: 80px;
+            top: 0;
+            left: 0;
+            z-index: 20;
+            filter: invert(100%);
+        }
+
+
+        input:checked+label::after {
+            background-image: none;
+            width: 100vw;
+            left: 0;
+            z-index: 10;
+        }
+
+        input:checked+label+.slide~input+label::after {
+            display: none;
+        }
+
+        input:checked+label+.slide+input+label::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 512' width='100' fill='white'%3E%3Cpath d='M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z' /%3E%3C/svg%3E");
+            display: block;
+            width: 80px;
+            right: 0;
+            left: auto;
+        }
+
+
+
+        .slide {
+            position: absolute;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transform: translateX(-100%);
+            transition-duration: .4s;
+            opacity: 1;
+        }
+
+        input:checked~.slide {
+            transform: translateX(100%);
+        }
+
+        input:checked+label+.slide {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .bg1 {
+            background-image: url('static/img/2 (1).png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+
+        .bg2 {
+            background-image: url('static/img/3 (1).png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+
+        .bg3 {
+            background-image: url('static/img/4 (1).png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+
+        .bg4 {
+            background-image: url('static/img/5 (1).png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+
+        .bg5 {
+            background-image: url('static/img/6 (1).png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg6{
+            background-image: url('static/img/7 (1).png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg7{
+            background-image: url('static/img/8 (1).png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg8 {
+            background-image: url('static/img/11.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg9 {
+            background-image: url('static/img/12.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg10 {
+            background-image: url('static/img/16.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg11 {
+            background-image: url('static/img/19.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg12 {
+            background-image: url('static/img/21.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg13 {
+            background-image: url('static/img/24.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg14 {
+            background-image: url('static/img/25.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg15 {
+            background-image: url('static/img/26.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg16 {
+            background-image: url('static/img/27.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg17 {
+            background-image: url('static/img/28.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg18{
+            background-image: url('static/img/29.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg19 {
+            background-image: url('static/img/30.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .bg20 {
+            background-image: url('static/img/31.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 350px;
+        }
+        .disclaimer{
+            padding: 45px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div>
+            <a href="index.html"><img src="static/img/1.png" style="width: 50px;"></a>
+        </div>
+        <div>
+            <a href="home.html">Home</a>
+            <a href="product.html">Products</a>
+            <a href="adopt.html" id="active">Pet Adopt</a>
+            <a href="about.html">About</a>
+        </div>
+        <div>
+            <img src="static/img/paw_cart.png" class="paw_cart">
+            <div class="counter">5</div>
+        </div>
+    </nav>
+  <section id="adopt">
+        
+        <div class="content_adopt">
+            <input type="radio" id="trigger1" name="slider">
+            <label for="trigger1"><span class="sr-only"></span></label>
+            <div class="slide bg1"></div>
+
+            <input type="radio" id="trigger2" name="slider" checked autofocus>
+            <label for="trigger2"><span class="sr-only"></span></label>
+            <div class="slide bg2"></div>
+
+            <input type="radio" id="trigger3" name="slider">
+            <label for="trigger3"><span class="sr-only"></span></label>
+            <div class="slide bg3"></div>
+
+            <input type="radio" id="trigger4" name="slider">
+            <label for="trigger4"><span class="sr-only"></span></label>
+            <div class="slide bg4"></div>
+
+            <input type="radio" id="trigger5" name="slider">
+            <label for="trigger5"><span class="sr-only">sa</span></label>
+            <div class="slide bg5"></div>
+            
+            <input type="radio" id="trigger6" name="slider">
+            <label for="trigger6"><span class="sr-only">sa</span></label>
+            <div class="slide bg6"></div>
+
+            <input type="radio" id="trigger7" name="slider">
+            <label for="trigger7"><span class="sr-only">sa</span></label>
+            <div class="slide bg7"></div>
+
+            <input type="radio" id="trigger8" name="slider">
+            <label for="trigger8"><span class="sr-only">sa</span></label>
+            <div class="slide bg8"></div>
+
+            <input type="radio" id="trigger9" name="slider">
+            <label for="trigger9"><span class="sr-only">sa</span></label>
+            <div class="slide bg9"></div>
+
+            <input type="radio" id="trigger10" name="slider">
+            <label for="trigger10"><span class="sr-only">sa</span></label>
+            <div class="slide bg10"></div>
+
+            <input type="radio" id="trigger11" name="slider">
+            <label for="trigger11"><span class="sr-only">sa</span></label>
+            <div class="slide bg11"></div>
+
+            <input type="radio" id="trigger12" name="slider">
+            <label for="trigger12"><span class="sr-only">sa</span></label>
+            <div class="slide bg12"></div>
+
+            <input type="radio" id="trigger13" name="slider">
+            <label for="trigger13"><span class="sr-only">sa</span></label>
+            <div class="slide bg13"></div>
+
+            <input type="radio" id="trigger14" name="slider">
+            <label for="trigger14"><span class="sr-only">sa</span></label>
+            <div class="slide bg14"></div>
+
+            <input type="radio" id="trigger15" name="slider">
+            <label for="trigger15"><span class="sr-only">sa</span></label>
+            <div class="slide bg15"></div>
+
+            <input type="radio" id="trigger16" name="slider">
+            <label for="trigger16"><span class="sr-only">sa</span></label>
+            <div class="slide bg16"></div>
+
+            <input type="radio" id="trigger17" name="slider">
+            <label for="trigger17"><span class="sr-only">sa</span></label>
+            <div class="slide bg17"></div>
+
+            <input type="radio" id="trigger18" name="slider">
+            <label for="trigger18"><span class="sr-only">sa</span></label>
+            <div class="slide bg18"></div>
+
+            <input type="radio" id="trigger19" name="slider">
+            <label for="trigger19"><span class="sr-only">sa</span></label>
+            <div class="slide bg19"></div>
+
+            <input type="radio" id="trigger20" name="slider">
+            <label for="trigger20"><span class="sr-only">sa</span></label>
+            <div class="slide bg20"></div>
+        </div>
+
+    </section>
+    <div class="disclaimer">
+        <h3>
+            Legal Compliance
+        </h3>
+        <p>
+            Compliance with legal regulations is paramount to us. We meticulously research and adhere to all relevant local, state, and national regulations governing the sale and adoption of cats. By doing so, we ensure that our practices meet the highest legal standards.
+        </p>
+
+        <h3>
+            Promoting Adoption
+        </h3>
+        <p>
+            While we provide a platform for cat sales, we also advocate for adoption whenever possible. We actively partner with local animal shelters and rescue organizations to facilitate adoptions, promoting responsible pet ownership and supporting efforts to reduce animal homelessness and overpopulation.
+        </p>
+
+        <h3>
+            Health and Well-being
+        </h3>
+        <p>
+            The health and well-being of our cats are of utmost importance to us. Before being offered for adoption or sale, each cat receives proper veterinary care, vaccinations, and health screenings. We transparently provide potential adopters or buyers with detailed information about the cat's health history and medical treatments.
+        </p>
+
+        <h3>
+            Thorough Screening Process
+        </h3>
+        <p>
+            We implement a thorough screening process for potential adopters or buyers to ensure they can provide a safe and loving home for their new companion. Our process may include adoption applications, home visits, and references from veterinarians or previous pet owners.
+        </p>
+
+        <h3>
+            Education and Support
+        </h3>
+        <p>
+            Our commitment to our customers doesn't end after the adoption process. We offer comprehensive educational resources and ongoing support to new cat owners, empowering them to provide the best care possible for their furry friends.
+
+At Furr Sale, we believe that responsible pet ownership starts with a compassionate and ethical approach. Join us in creating a positive impact on the lives of cats and their new owners.
+        </p>
+</body>
+
+</html>

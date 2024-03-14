@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/image_gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="static/img/logo_white.png">
+    <title>Furr Sale</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            position: relative;
+            margin: 24px;
+            background-color: #ffffff;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            -webkit-box-shadow: 3px 3px 10px -2.5px #dddddd;
+            -moz-box-shadow: 3px 3px 10px -2.5px #dddddd;
+            box-shadow: 3px 3px 10px -2.5px #dddddd;
+        }
+
+        .navbar div {
+            margin-left: 8px;
+            margin-right: 8px;
+            padding: 5px;
+        }
+
+        .navbar a {
+            color: #000000;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: rgb(112, 24, 24);
+        }
+
+        @media screen and (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .animated-image {
+            position: absolute;
+            z-index: -1;
+            top: 10%;
+            right: 10%;
+            width: 200px;
+            animation: wiggle 2s infinite;
+        }
+
+        @keyframes wiggle {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(3deg);
+            }
+
+            50% {
+                transform: rotate(-7deg);
+            }
+
+            75% {
+                transform: rotate(5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .paw_cart {
+            width: 50px;
+        }
+
+        .counter {
+            position: absolute;
+            top: 3%;
+            right: 0.33%;
+            color: rgb(255, 0, 0);
+            font-size: 14px;
+            font-weight: bold;
+
+        }
+        #about {
+            position: relative;
+            z-index: -2;
+            padding: 24px;
+
+        }
+
+        .content_about {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 50vh;
+            background-color: #ffffff;
+            -webkit-box-shadow: 3px 3px 10px 3px #dddddd;
+            -moz-box-shadow: 3px 3px 10px 3px #dddddd;
+            box-shadow: 3px 3px 10px 3px #dddddd;
+        }
+        .content_about_2{
+            margin-top: 54px;
+            padding: 12px;
+        }
+        .about_banner p{
+            padding: 12px;
+        }
+        #active{
+            background-color: #ddd;
+            color: rgb(112, 24, 24);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div>
+            <a href="index.html"><img src="static/img/1.png" style="width: 50px;"></a>
+        </div>
+        <div>
+            <a href="home.html">Home</a>
+            <a href="product.html">Products</a>
+            <a href="adopt.html" >Pet Adopt</a>
+            <a href="about.html" id="active">About</a>
+        </div>
+        <div>
+            <img src="static/img/paw_cart.png" class="paw_cart">
+            <div class="counter">5</div>
+        </div>
+    </nav>
+    <div><img src="static/img/tail.png" alt="Animated Image" class="animated-image"></div>
+
+    <section id="about">
+        <div class="content_about">
+            <img src="static/img/11.png" class="cat_front">
+            <div class="about_banner">
+                <h2>About Us - Furr Sale</h2>
+                <p>Welcome to Furr Sale, where we prioritize the welfare of our furry friends above all else. Our platform provides a space for individuals to find their purr-fect companion while upholding strict ethical standards and complying with legal regulations.</p>
+
+            </div>
+        </div>
+        <div class="content_about_2">
+                <h2>Our Mission</h2>
+                <p>At Furr Sale, our mission is simple: to ensure the well-being and happiness of every cat that passes through our platform. We believe that every cat deserves a loving home, and we're dedicated to facilitating responsible adoptions while promoting animal welfare.</p>
+
+                <h2>Ethical Standards</h2>
+                <p>We understand the ethical considerations involved in selling cats online. That's why we adhere to strict ethical standards throughout the entire adoption process. From breeding and transportation to adoption or sale, we prioritize the welfare of the animals above all else.</p>
+
+                <p>At Furr Sale, we believe that responsible pet ownership starts with a compassionate and ethical approach. Join us in creating a positive impact on the lives of cats and their new owners.</p>
+        </div>
+    </section>
+
+</section>
+
+</body>
+
+</html>

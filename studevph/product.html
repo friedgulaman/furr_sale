@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/image_gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="static/img/logo_white.png">
+    <title>Furr Sale</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            position: relative;
+            margin: 24px;
+            background-color: #ffffff;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            -webkit-box-shadow: 3px 3px 10px -2.5px #dddddd;
+            -moz-box-shadow: 3px 3px 10px -2.5px #dddddd;
+            box-shadow: 3px 3px 10px -2.5px #dddddd;
+        }
+
+        .navbar div {
+            margin-left: 8px;
+            margin-right: 8px;
+            padding: 5px;
+        }
+
+        .navbar a {
+            color: #000000;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: rgb(112, 24, 24);
+        }
+
+        @media screen and (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .animated-image {
+            position: absolute;
+            z-index: -1;
+            top: 10%;
+            right: 10%;
+            width: 200px;
+            animation: wiggle 2s infinite;
+        }
+
+        @keyframes wiggle {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(3deg);
+            }
+
+            50% {
+                transform: rotate(-7deg);
+            }
+
+            75% {
+                transform: rotate(5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .paw_cart {
+            width: 50px;
+        }
+
+        .counter {
+            position: absolute;
+            top: 3%;
+            right: 0.33%;
+            color: rgb(255, 0, 0);
+            font-size: 14px;
+            font-weight: bold;
+
+        }
+
+        #about {
+            position: relative;
+            z-index: -2;
+            padding: 24px;
+
+        }
+
+        .content_about {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 50vh;
+            background-color: #ffffff;
+            -webkit-box-shadow: 3px 3px 10px 3px #dddddd;
+            -moz-box-shadow: 3px 3px 10px 3px #dddddd;
+            box-shadow: 3px 3px 10px 3px #dddddd;
+        }
+
+        
+
+        .about_banner p {
+            padding: 12px;
+        }
+
+        #active {
+            background-color: #ddd;
+            color: rgb(112, 24, 24);
+        }
+        .content_about_2 {
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .gallery {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 12px;
+            font-family: arial;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 16px;
+        }
+
+        .gallery-item figure {
+            margin: 0;
+            position: relative;
+        }
+
+        .gallery-item img {
+            margin: 12px;
+            width: 250px;
+            border-radius: 14px;
+            border: 1px solid rgb(206, 206, 206);
+            -webkit-box-shadow: 3px 3px 10px -2.5px #dddddd;
+            -moz-box-shadow: 3px 3px 10px -2.5px #dddddd;
+            box-shadow: 3px 3px 10px -2.5px #dddddd;
+        }
+
+        .gallery-item p {
+            margin: 0;
+            padding: 8px;
+            max-width: 250px;
+            text-wrap: wrap;
+            overflow: hidden;
+        }
+
+        @media screen and (max-width: 500px) {
+            .gallery {
+                column-count: 1;
+            }
+        }
+
+        @media screen and (min-width: 501px) and (max-width: 700px) {
+            .gallery {
+                column-count: 2;
+            }
+        }
+
+        @media screen and (min-width: 701px) and (max-width: 900px) {
+            .gallery {
+                column-count: 3;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div>
+            <a href="index.html"><img src="static/img/1.png" style="width: 50px;"></a>
+        </div>
+        <div>
+            <a href="home.html">Home</a>
+            <a href="products.html" id="active">Products</a>
+            <a href="adopt.html">Pet Adopt</a>
+            <a href="about.html" >About</a>
+        </div>
+        <div>
+            <img src="static/img/paw_cart.png" class="paw_cart">
+            <div class="counter">5</div>
+        </div>
+    </nav>
+    <div><img src="static/img/tail.png" alt="Animated Image" class="animated-image"></div>
+
+    <section id="about">
+        <div class="content_about">
+            <img src="static/img/11.png" class="cat_front">
+            <div class="about_banner">
+                <h2>Products</h2>
+                <p>Welcome to our product page, where you'll find a diverse selection of high-quality items to meet your needs. From cozy cat beds to interactive toys and nutritious treats, we have everything you need to keep your furry friends happy and healthy. Explore our collection and treat your pets to the best products available!"</p>
+
+            </div>
+        </div>
+       
+    </section>
+    <div class="content_about_2">
+        <div class="gallery">
+            <div class="gallery-item">
+                <figure>
+                    <img src="static/img/toy (1).png" alt="dog" />
+                    <p>Cat Treats Furr Sale  </p>
+                    <p>P 450</p>
+                </figure>
+            </div>
+            <div class="gallery-item">
+                <figure>
+                    <img src="static/img/toy (2).png" alt="dog" />
+                    <p>Cat Food Furr Sale Clasics </p>
+                    <p>P 150</p>
+                </figure>
+            </div>
+            <div class="gallery-item">
+                <figure>
+                    <img src="static/img/toy (3).png" alt="dog" />
+                    <p>Cat Toys Furr Sale  </p>
+                    <p>P 250</p>
+                </figure>
+            </div>
+            <div class="gallery-item">
+                <figure>
+                    <img src="static/img/toy (4).png" alt="dog" />
+                    <p>Cat Collar Furr Sale  </p>
+                    <p>P 90</p>
+                </figure>
+            </div>
+            <div class="gallery-item">
+                <figure>
+                    <img src="static/img/toy (5).png" alt="dog" />
+                    <p>Whiskas Junior  </p>
+                    <p>P 850</p>
+                </figure>
+            </div>
+            <div class="gallery-item">
+                <figure>
+                    <img src="static/img/toy (6).png" alt="dog" />
+                    <p>Cat Cage Furr Sale  </p>
+                    <p>P 2,899</p>
+                </figure>
+            </div>
+            <div class="gallery-item">
+                <figure>
+                    <img src="static/img/toy (7).png" alt="dog" />
+                    <p>Cat Toys Furr Sale  </p>
+                    <p>P 150</p>
+                </figure>
+            </div>
+            <div class="gallery-item">
+                <figure>
+                    <img src="static/img/toy (8).png" alt="dog" />
+                    <p>Cat Toys Furr Sale  </p>
+                    <p>P 150</p>
+                </figure>
+            </div>
+            <div class="gallery-item">
+                <figure>
+                    <img src="static/img/toy (9).png" alt="dog" />
+                    <p>Cat Liter Furr Sale Medium </p>
+                    <p>P 350</p>
+                </figure>
+            </div>
+            <div class="gallery-item">
+                <figure>
+                    <img src="static/img/toy (10).png" alt="dog" />
+                    <p>Cat Liter Furr Sale Large </p>
+                    <p>P 550</p>
+                </figure>
+            </div>
+            <div class="gallery-item">
+                <figure>
+                    <img src="static/img/toy (11).png" alt="dog" />
+                    <p>Cat Food Furr Sale (Tuna Flavor)</p>
+                    <p>P 350</p>
+                </figure>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

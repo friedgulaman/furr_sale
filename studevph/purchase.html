@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/image_gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="static/img/logo_white.png">
+    <title>Furr Sale</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            position: relative;
+            margin: 24px;
+            background-color: #ffffff;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            -webkit-box-shadow: 3px 3px 10px -2.5px #dddddd;
+            -moz-box-shadow: 3px 3px 10px -2.5px #dddddd;
+            box-shadow: 3px 3px 10px -2.5px #dddddd;
+        }
+
+        .navbar div {
+            margin-left: 8px;
+            margin-right: 8px;
+            padding: 5px;
+        }
+
+        .navbar a {
+            color: #000000;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: rgb(112, 24, 24);
+        }
+
+        @media screen and (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .animated-image {
+            position: absolute;
+            z-index: -1;
+            top: 10%;
+            right: 10%;
+            width: 200px;
+            animation: wiggle 2s infinite;
+        }
+
+        @keyframes wiggle {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(3deg);
+            }
+
+            50% {
+                transform: rotate(-7deg);
+            }
+
+            75% {
+                transform: rotate(5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .paw_cart {
+            width: 50px;
+        }
+
+        .counter {
+            position: absolute;
+            top: 3%;
+            right: 0.33%;
+            color: rgb(255, 0, 0);
+            font-size: 14px;
+            font-weight: bold;
+
+        }
+        #about {
+            position: relative;
+            z-index: 0;
+            padding: 24px;
+
+        }
+
+        .content_purchase {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 70vh;
+            background-color: #ffffff;
+            -webkit-box-shadow: 3px 3px 10px 3px #dddddd;
+            -moz-box-shadow: 3px 3px 10px 3px #dddddd;
+            box-shadow: 3px 3px 10px 3px #dddddd;
+        }
+        .content_purchase  img{
+            width: 350px;
+            padding: 12px;
+        }
+        
+        .about_banner p{
+            padding: 12px;
+        }
+        #active{
+            background-color: #ddd;
+            color: rgb(112, 24, 24);
+        }
+        button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(112, 24, 24);
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            border: none;
+            border-radius: 12px;
+            
+        }
+        button:hover{
+            scale: 1.02;
+            -webkit-box-shadow: 3px 3px 10px 3px #dddddd;
+            -moz-box-shadow: 3px 3px 10px 3px #dddddd;
+            box-shadow: 3px 3px 10px 3px #961c1c;
+        }
+        button .icon_paw{
+            width: 50px;
+            margin: 0;
+            padding: 0;
+            filter: invert(100%);
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div>
+            <a href="index.html"><img src="static/img/1.png" style="width: 50px;"></a>
+        </div>
+        <div>
+            <a href="home.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="adopt.html" >Pet Adopt</a>
+            <a href="about.html" id="active">About</a>
+        </div>
+        <div>
+            <img src="static/img/paw_cart.png" class="paw_cart">
+            <div class="counter">5</div>
+        </div>
+    </nav>
+    
+
+    <section id="about">
+        <div class="content_purchase">
+            <img src="static/img/toy (11).png" class="cat_front">
+            <div class="about_banner">
+                <h1>Cat Food Furr Sale (Tuna Flavor) 50% Discount</h1>
+                <h4> <strong>Quantity:</strong> 1</h4>
+                <h4> <strong>Price:</strong><span style="color: red;"> P 350</span> </h4>
+                <button> <p>Add to Cart</p><span> <img class="icon_paw" src="static/img/paw_cart.png" ></span> </button>
+
+            </div>
+        </div>
+        
+    </section>
+
+
+
+</body>
+
+</html>
